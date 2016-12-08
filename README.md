@@ -1,5 +1,4 @@
-# \<polymaiap-loader\>
-
+# polymaiap-loader
 Loader for Polymaiap App
 
 ## Install the Polymer-CLI

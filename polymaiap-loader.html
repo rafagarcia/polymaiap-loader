@@ -1,0 +1,112 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`polymaiap-loader`
+Loader for Polymaiap App.
+Loader CSS example taken from fareco (https://github.com/fareco/css-loader)
+
+@demo demo/index.html 
+-->
+
+<dom-module id="polymaiap-loader">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        height: 250px;
+        width: 100%;
+        background-color: #4169E1;
+      }
+
+      .loader span {
+        color: #FFF;
+        width: 100%;
+        display: inline-block;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .square-rotate-3d .loader {
+        width: 100px;
+        height: 100px;
+      }
+      .square-rotate-3d .loader .square {
+        margin-top: 25%;
+        margin-left: 25%;
+        width: 50%;
+        height: 50%;
+        background-color: #FFF;
+        -webkit-animation: squareRotate3d 2s infinite ease-in-out;
+                animation: squareRotate3d 2s infinite ease-in-out;
+      }
+
+      @-webkit-keyframes squareRotate3d {
+        25% {
+          -webkit-transform: perspective(100px) rotateX(180deg) rotateY(0);
+                  transform: perspective(100px) rotateX(180deg) rotateY(0);
+        }
+        50% {
+          -webkit-transform: perspective(100px) rotateX(180deg) rotateY(-180deg);
+                  transform: perspective(100px) rotateX(180deg) rotateY(-180deg);
+        }
+        75% {
+          -webkit-transform: perspective(100px) rotateX(0) rotateY(-180deg);
+                  transform: perspective(100px) rotateX(0) rotateY(-180deg);
+        }
+        100% {
+          -webkit-transform: perspective(100px) rotateX(0) rotateY(0);
+                  transform: perspective(100px) rotateX(0) rotateY(0);
+        }
+      }
+
+      @keyframes squareRotate3d {
+        25% {
+          -webkit-transform: perspective(100px) rotateX(180deg) rotateY(0);
+                  transform: perspective(100px) rotateX(180deg) rotateY(0);
+        }
+        50% {
+          -webkit-transform: perspective(100px) rotateX(180deg) rotateY(-180deg);
+                  transform: perspective(100px) rotateX(180deg) rotateY(-180deg);
+        }
+        75% {
+          -webkit-transform: perspective(100px) rotateX(0) rotateY(-180deg);
+                  transform: perspective(100px) rotateX(0) rotateY(-180deg);
+        }
+        100% {
+          -webkit-transform: perspective(100px) rotateX(0) rotateY(0);
+                  transform: perspective(100px) rotateX(0) rotateY(0);
+        }
+      }
+    </style>
+    <div class="loader-container square-rotate-3d">
+      <div class="loader">
+        <div class="square"></div>
+        <!-- Add/remove message using hidden attribute -->
+        <span hidden="{{!message}}">[[message]]</span>
+        <!-- Add/remove message using template dom-if. Will change in Polymer 2.0 -->
+        <!-- <template is="dom-if" if="[[message]]">
+          <span>[[message]]</span>
+        </template> -->
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'polymaiap-loader',
+
+      properties: {
+        message: {
+          type: String,
+          value: 'Loading...',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
