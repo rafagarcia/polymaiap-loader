@@ -11,6 +11,15 @@ Loader CSS example taken from fareco (https://github.com/fareco/css-loader)
 <dom-module id="polymaiap-loader">
   <template>
     <style>
+      :root {
+        /* css variables, a new standard
+         * see https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care
+         */
+        --loader-size: 100px;
+        --square-size: 50%;
+        --message-top-margin: 10px;
+        --animation-time: calc(3 * 1s);
+      };
       :host {
         display: flex;
         justify-content: center;
@@ -26,22 +35,22 @@ Loader CSS example taken from fareco (https://github.com/fareco/css-loader)
         color: #FFF;
         width: 100%;
         display: inline-block;
-        margin-top: 20px;
+        margin-top: var(--message-top-margin);
         text-align: center;
       }
 
       .square-rotate-3d .loader {
-        width: 100px;
-        height: 100px;
+        width: var(--loader-size);
+        height: var(--loader-size);
       }
       .square-rotate-3d .loader .square {
         margin-top: 25%;
         margin-left: 25%;
-        width: 50%;
-        height: 50%;
+        height: var(--square-size);
+        width: var(--square-size);
         background-color: #FFF;
-        -webkit-animation: squareRotate3d 2s infinite ease-in-out;
-                animation: squareRotate3d 2s infinite ease-in-out;
+        -webkit-animation: squareRotate3d var(--animation-time) infinite ease-in-out;
+                animation: squareRotate3d var(--animation-time) infinite ease-in-out;
       }
 
       @-webkit-keyframes squareRotate3d {
